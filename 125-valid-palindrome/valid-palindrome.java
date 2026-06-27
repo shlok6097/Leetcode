@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+
+        int left = 0;
+        int right = s.length() - 1;
+        String k = s.toLowerCase();
+
+        while (left < right) {
+
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
+                left++;
+            }
+
+            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+                right--;
+            }
+
+            if (k.charAt(left) != k.charAt(right))
+                return false;
+
+            left++;
+            right--;
+
+        }
+
+        return true;
+
+    }
+}
