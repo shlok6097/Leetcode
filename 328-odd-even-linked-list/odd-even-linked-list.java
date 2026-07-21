@@ -13,6 +13,25 @@ class Solution {
 
         if(head == null || head.next ==null) return head;
 
+        ListNode evan= head.next,evanHead= head.next;
+        ListNode odd = head;
+
+        while(evan !=null && evan.next != null){
+            odd.next= odd.next.next;
+            evan.next= evan.next.next;
+
+            odd = odd.next;
+            evan = evan.next;
+        }
+        odd.next =evanHead;
+
+        return head;
+
+
+        //Breutefore
+
+       /* 
+
         ArrayList<Integer> ans = new ArrayList<>();
 
         ListNode temp =head;
@@ -42,7 +61,10 @@ class Solution {
             temp = temp.next;
         }
 
-        return head;
+        return head;*/
+
+
+        
         
     }
 }
