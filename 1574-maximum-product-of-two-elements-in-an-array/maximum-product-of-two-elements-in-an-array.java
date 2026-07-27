@@ -1,11 +1,25 @@
 class Solution {
     public int maxProduct(int[] nums) {
 
-        Arrays.sort(nums);
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MIN_VALUE;
 
-        
+        int k =0;
 
-        return (nums[nums.length-2]-1)*(nums[nums.length-1]-1);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > max){
+                max = nums[i];
+                k =i;
+
+            }
+                
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > min && k != i)
+                min = nums[i];
+        }
+
+        return (min-1)*(max-1);
 
     }
 }
