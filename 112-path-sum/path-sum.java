@@ -19,7 +19,8 @@ class Solution {
        int[] d = new int[1];
        d[0] = 0;
         
-        return helper(root , d,targetSum);
+       // return helper(root , d,targetSum);
+       return pathSum(root, targetSum);
         
     }
     private boolean helper(TreeNode root , int[] d ,int target){
@@ -39,5 +40,36 @@ class Solution {
         return ls || rs;
 
         
+    }
+
+
+    private boolean pathSum(TreeNode root,int target){
+        if(root == null) return false;
+
+        Stack<TreeNode> queue = new Stack<>();
+        Stack<Integer> st = new Stack<>();
+        queue.push(root);
+        st.push(root.val);
+
+
+
+        while(!queue.isEmpty()){
+            TreeNode temp = queue.pop();
+            int tempSum = st.pop();
+
+            if(temp.left == null && temp.right == null && tempSum == target) return true;
+
+            if(temp.left != null){
+                queue.push(temp.left);
+                st.push(tempSum + temp.left.val);
+
+            }
+            if(temp.right !=  null){
+                queue.push(temp.right);
+                st.push(tempSum + temp.right.val);
+            }
+
+        }
+        return false;
     }
 }
