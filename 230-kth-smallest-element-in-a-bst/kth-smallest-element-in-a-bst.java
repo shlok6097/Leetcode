@@ -18,10 +18,14 @@ class Solution {
 
         List<Integer> ls = new ArrayList<>();
 
-        inorder(root , ls);
-        Collections.sort(ls);
+        // inorder(root , ls);
+        // Collections.sort(ls);
 
-        return ls.get(k-1);
+        // return ls.get(k-1);
+
+        int [] ans = new int[2];
+        inorder(root , ans,k);
+        return ans[0];
         
     }
 
@@ -31,5 +35,21 @@ class Solution {
         inorder(root.left, ls);
         ls.add(root.val);
         inorder(root.right ,ls);
+    }
+      private void inorder(TreeNode root , int[] ans  , int k){
+        if(root == null) return ;
+        
+
+       
+
+        inorder(root.left, ans , k);
+        ans[1]++;
+
+         if(ans[1] == k ){
+            ans[0] = root.val;
+            return;
+        }
+        
+        inorder(root.right ,ans , k);
     }
 }
